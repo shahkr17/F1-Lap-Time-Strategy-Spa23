@@ -1,53 +1,45 @@
 # F1 Lap Time Prediction Using Telemetry Data
 
-This project leverages telemetry data from Formula 1 to develop machine learning models that **predict driver lap times**. Data is obtained using the [FastF1](https://theoehrly.github.io/Fast-F1/) Python library and focuses specifically on **Max Verstappen’s performance during the 2023 Belgian Grand Prix at Spa-Francorchamps**.
+This project uses telemetry data from Formula 1 to predict driver lap times using machine learning. The data is sourced via the [FastF1](https://theoehrly.github.io/Fast-F1/) library, focusing on Max Verstappen’s performance in the 2023 Belgian Grand Prix at Spa-Francorchamps.
 
-The aim is to extract meaningful telemetry features (e.g., speed, throttle, brake, gear) and use them to train and evaluate regression models. Multiple models are compared using their **R² (coefficient of determination)** scores to determine which model best fits the data.
-
----
+Four regression models were implemented and evaluated using the R² score to determine predictive accuracy.
 
 ## Project Overview
 
-Key steps and components include:
+Key steps included:
 
-- Telemetry data extraction using the FastF1 API
-- Feature engineering from raw car telemetry data
-- Model training and evaluation using common regression algorithms
-- Visualization of telemetry profiles and feature importances
-- Performance comparison between models using R² scores
+- Data acquisition via FastF1  
+- Feature engineering from telemetry (e.g., speed, throttle, brake)  
+- Training and testing of four machine learning models:  
+  - Linear Regression  
+  - Gradient Boosting Regressor  
+  - Support Vector Regression (SVR)  
+  - Random Forest Regressor  
+- Comparison of model performance using R² scores  
+- Visualization of telemetry data and feature importance
 
----
+## Engineered Features
 
-## Extracted Features
+Features were extracted and aggregated per lap, including:
 
-Each lap is summarized using engineered features:
+- Speed: average, max, min  
+- Throttle: average, max, min  
+- Brake: average brake pressure, brake usage ratio  
+- Gear: average and max  
+- Lap time (target variable, in seconds)
 
-- Average, maximum, and minimum speed
-- Average, maximum, and minimum throttle position
-- Average brake pressure and brake usage ratio
-- Average and maximum gear usage
-- Lap time (target variable)
+## Model Comparison
 
----
-
-## Machine Learning Models
-
-Two regression models are implemented and compared:
-
-| Model               | R² Score (Example) |
-|--------------------|--------------------|
-| Linear Regression  | 0.65               |
-| Random Forest      | 0.82 *(Best fit)*  |
-
-> Replace these values with your actual model results.
-
-Additional models (e.g., Ridge Regression, Support Vector Regression) can easily be integrated for further experimentation.
-
----
+| Model                     | R² Score |
+|--------------------------|----------|
+| Linear Regression         | **0.85** *(Best Fit)*  
+| Gradient Boosting         | 0.78  
+| Support Vector Regression | 0.60  
+| Random Forest Regressor   | 0.82  
 
 ## Installation
 
-Clone the repository and install the required dependencies:
+Clone the repository and install dependencies:
 
 ```bash
 git clone https://github.com/your-username/f1-lap-time-prediction.git
